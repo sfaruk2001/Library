@@ -31,6 +31,7 @@ function Book(title, author, pages, read) {
         
         let container = document.querySelector('.container');
         let card = document.createElement('div');
+        card.classList.add('card');
 
         let title = document.createElement('p');
         title.innerText = myLibrary[i].title;
@@ -44,9 +45,9 @@ function Book(title, author, pages, read) {
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
-        console.log("valid1");
+        
 
         container.appendChild(card);
-        console.log("valid2");
+        
     }
   }
