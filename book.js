@@ -4,10 +4,16 @@ const myLibrary = [];
 
 let b1 = new Book("Lotr", "Tolkein", "700", "read");
 
+let modal = document.querySelector('.modal');
+let addBook = document.querySelector('.add-book');
+
+addBook.addEventListener('click', () => {
+  modal.showModal();
+});
+
 addBookToLibrary(b1);
 
 displayBooks();
-
 
 function Book(title, author, pages, read) {
     this.title = title;

@@ -8,6 +8,21 @@
     <script src="book.js" defer></script>
 </head>
 <body>
+    <dialog class="modal">
+        <h1>Book details</h1>
+        <form action="" class="form" method="dialog">
+            <label>Title</label><input type="text" required>
+            <label>Author</label><input type="text" required>
+            <label>Pages</label><input type="text" required>
+            <div class="read-options">
+                <p>Have you read this book?</p>
+                <input type="radio" name="read-status" value="Completed" id="yes-read" required><label for="yes-read">Yes</label>
+                <input type="radio" name="read-status" value="Incomplete" id="no-read"><label for="no-read">No</label>
+            </div>
+            <button type="submit" class="sub-form">Submit</button>
+        </form>
+    </dialog>
+
     <header>
         <h1>Library</h1>
         <button class="add-book">Add Book</button>
