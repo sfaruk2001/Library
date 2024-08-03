@@ -2,18 +2,30 @@
 
 const myLibrary = [];
 
-let b1 = new Book("Lotr", "Tolkein", "700", "read");
+let b1 = new Book("Lotr", "Tolkein", "700", "Complete");
+addBookToLibrary(b1);
+displayBooks();
 
 let modal = document.querySelector('.modal');
 let addBook = document.querySelector('.add-book');
+let submitBook = document.querySelector('.sub-form');
 
 addBook.addEventListener('click', () => {
   modal.showModal();
 });
 
-addBookToLibrary(b1);
+submitBook.addEventListener('click', (e) => {
+  let container = document.querySelector('.container');
+  let title = document.querySelector('#title').value;
+  let author = document.querySelector('#author').value;
+  let pages = document.querySelector('#pages').value;
+  let readStatus = document.querySelector('input[name="read-status"]:checked').value;
 
-displayBooks();
+  addBookToLibrary(new Book(title, author, pages, readStatus));
+  container.innerHTML = "";
+  displayBooks();
+});
+
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -48,10 +60,13 @@ function Book(title, author, pages, read) {
         let pages =  document.createElement('p');
         pages.innerText = myLibrary[i].pages;
 
+        let readStatus = document.createElement('p');
+        readStatus.innerText = myLibrary[i].read;
+
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
-        
+        card.appendChild(readStatus);
 
         container.appendChild(card);
         
