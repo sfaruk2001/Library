@@ -62,3 +62,13 @@ form {
     width: 100px;
     height: 30px;
 }
+
+button[status='Complete'] {
+    background-color: green;
+    color: white;
+}
+
+button[status='Incomplete'] {
+    background-color: red;
+    color: white;
+}

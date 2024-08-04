@@ -50,6 +50,9 @@ function Book(title, author, pages, read) {
         let container = document.querySelector('.container');
         let card = document.createElement('div');
         card.classList.add('card');
+        //give each card a data attribute that is its idx in order to find it and delete it if needed
+        card.classList.add('data-idx');
+        card.setAttribute('data-idx', i);
 
         let title = document.createElement('p');
         title.innerText = myLibrary[i].title;
@@ -60,15 +63,49 @@ function Book(title, author, pages, read) {
         let pages =  document.createElement('p');
         pages.innerText = myLibrary[i].pages;
 
-        let readStatus = document.createElement('p');
-        readStatus.innerText = myLibrary[i].read;
+        //let readStatus = document.createElement('p');
+        //readStatus.innerText = myLibrary[i].read;
 
+        let deleteButton = document.createElement('button');
+        deleteButton.innerText = "Delete";
+        deleteButton.classList.add('delete');
+        deleteButton.addEventListener('click', (e) => {
+          let libraryIdx = Number(e.target.parentElement.dataset.idx);
+          myLibrary.splice(libraryIdx, 1);
+          container.innerHTML = '';//will erase items in the container
+          displayBooks();//will show all the items in updated array
+
+        });
+
+        let toggle = document.createElement('button');
+        toggle.classList.add('status');
+        if (myLibrary[i].read === 'Complete') {
+          toggle.innerText = myLibrary[i].read;
+          toggle.setAttribute('status', 'Complete');
+        } else {
+          toggle.innerText = myLibrary[i].read;
+          toggle.setAttribute('status', 'Incomplete');
+        }
+
+        toggle.addEventListener('click', (e) => {
+          if (e.target.innerHTML === 'Complete') {
+            e.target.innerHTML = 'Incomplete';
+            toggle.setAttribute('status', 'Incomplete');
+          } else {
+            e.target.innerHTML = 'Complete';
+            toggle.setAttribute('status', 'Complete');
+          }
+        });
+      
+        
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
-        card.appendChild(readStatus);
+        card.appendChild(deleteButton);
+        card.appendChild(toggle);
 
         container.appendChild(card);
         
     }
   }
+
