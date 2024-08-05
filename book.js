@@ -91,12 +91,19 @@ function Book(title, author, pages, read) {
         }
 
         toggle.addEventListener('click', (e) => {
+          let idx = e.target.parentElement.dataset.idx;
           if (e.target.innerHTML === 'Complete') {
             e.target.innerHTML = 'Incomplete';
             toggle.setAttribute('status', 'Incomplete');
+            //I change the internal status property as well of the specific object
+            myLibrary[idx].read = 'Incomplete';
+            
           } else {
             e.target.innerHTML = 'Complete';
             toggle.setAttribute('status', 'Complete');
+            //I change the internal status property as well of the specific object
+            myLibrary[idx].read = 'Complete';
+
           }
         });
       
