@@ -2,7 +2,7 @@
 
 const myLibrary = [];
 
-let b1 = new Book("Lotr", "Tolkein", "700", "Complete");
+let b1 = new Book("Lord of the Rings", "Tolkein", "700", "Complete");
 addBookToLibrary(b1);
 displayBooks();
 
@@ -56,12 +56,15 @@ function Book(title, author, pages, read) {
 
         let title = document.createElement('p');
         title.innerText = myLibrary[i].title;
+        title.classList.add('title-s');
 
         let author =  document.createElement('p');
-        author.innerText = myLibrary[i].author;
+        author.innerText = 'By ' + myLibrary[i].author;
+        author.classList.add('author-s');
 
         let pages =  document.createElement('p');
-        pages.innerText = myLibrary[i].pages;
+        pages.innerText = myLibrary[i].pages + ' Pages';
+        pages.classList.add('page-s');
 
         //let readStatus = document.createElement('p');
         //readStatus.innerText = myLibrary[i].read;
@@ -101,8 +104,8 @@ function Book(title, author, pages, read) {
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
-        card.appendChild(deleteButton);
         card.appendChild(toggle);
+        card.appendChild(deleteButton);
 
         container.appendChild(card);
         
