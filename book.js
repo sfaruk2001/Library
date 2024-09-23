@@ -1,4 +1,11 @@
-
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+}
 
 const myLibrary = [];
 
@@ -7,6 +14,7 @@ addBookToLibrary(b1);
 displayBooks();
 
 let modal = document.querySelector('.modal');
+let form = document.querySelector('.form');
 let addBook = document.querySelector('.add-book');
 let submitBook = document.querySelector('.sub-form');
 
@@ -21,12 +29,22 @@ submitBook.addEventListener('click', (e) => {
   let pages = document.querySelector('#pages').value;
   let readStatus = document.querySelector('input[name="read-status"]:checked').value;
 
-  addBookToLibrary(new Book(title, author, pages, readStatus));
-  container.innerHTML = "";
-  displayBooks();
+  //Prevents user from submitting books without title, author, page while checking read status
+  if(title === "" || author === "" || pages === "") {
+
+  } else {
+    addBookToLibrary(new Book(title, author, pages, readStatus));
+    container.innerHTML = "";
+    displayBooks();
+    form.reset();
+    modal.close();
+  }
+
+
+  
 });
 
-
+/** 
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -38,6 +56,8 @@ function Book(title, author, pages, read) {
     }
     
   }
+*/
+
 
   function addBookToLibrary(book) {
     myLibrary.push(book);
